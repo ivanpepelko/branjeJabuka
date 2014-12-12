@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace branjeVoca {
     class Program {
 
-        internal static List<Vocka> Vocke;
-        internal static List<BeracVoca> Beraci;
+        private static List<Vocka> Vocke;
+        private static List<BeracVoca> Beraci;
 
         static void Main(string[] args) {
             Vocke = new List<Vocka>();
@@ -20,7 +20,7 @@ namespace branjeVoca {
 
         }
 
-        static internal void Meni() {
+        static private void Meni() {
             Console.Clear();
             Copyright();
             Naslov("Branje vocaka - Glavni meni");
@@ -50,7 +50,7 @@ namespace branjeVoca {
 
         }
 
-        static internal void MeniVocke() {
+        static private void MeniVocke() {
             Console.Clear();
             Copyright();
             Naslov("Voćke");
@@ -115,7 +115,7 @@ namespace branjeVoca {
             }
         }
 
-        static internal void MeniBeraci() {
+        static private void MeniBeraci() {
             Console.Clear();
             Copyright();
             Naslov("Berači");
@@ -141,7 +141,7 @@ namespace branjeVoca {
             }
         }
 
-        static internal void Copyright() {
+        static private void Copyright() {
             int left = Console.WindowLeft;
             int top = Console.WindowTop;
 
@@ -151,27 +151,27 @@ namespace branjeVoca {
             Console.SetCursorPosition(left, top);
         }
 
-        static internal void Message(string _msg) {
+        static private void Message(string _msg) {
             Console.WriteLine(_msg + " Pritisnite bilo koju tipku za nastavak...");
             Console.ReadKey();
         }
 
-        static internal void Message(string _msg, ConsoleColor _color) {
+        static private void Message(string _msg, ConsoleColor _color) {
             Console.BackgroundColor = _color;
             Console.WriteLine(_msg + " Pritisnite bilo koju tipku za nastavak...");
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ReadKey();
         }
 
-        static internal void PogresanUnosMessage() {
+        static private void PogresanUnosMessage() {
             Message("Pogrešan unos!", ConsoleColor.Red);
         }
 
-        static internal void Separator() {
+        static private void Separator() {
             Console.WriteLine("-------------------------------------------------------------------------------");
         }
 
-        static internal void Naslov(string _naslov) {
+        static private void Naslov(string _naslov) {
             Separator();
             Console.WriteLine(_naslov);
             Separator();

@@ -9,7 +9,12 @@ namespace branjeVoca {
 
         public string Ime {
             get;
-            set;
+            protected set;
+        }
+
+        public int VelicinaSpremnika {
+            get;
+            protected set;
         }
 
         public List<Plod> SpremnikPlodova;
@@ -27,6 +32,13 @@ namespace branjeVoca {
         public BeracVoca(string _ime) {
             this.Ime = _ime;
             this.SpremnikPlodova = new List<Plod>();
+            this.VelicinaSpremnika = 5000;
+        }
+
+        public BeracVoca(string _ime, int _velicina_spremnika) {
+            this.Ime = _ime;
+            this.SpremnikPlodova = new List<Plod>();
+            this.VelicinaSpremnika = _velicina_spremnika;
         }
 
         public void uberiPlod(Vocka _vocka) {

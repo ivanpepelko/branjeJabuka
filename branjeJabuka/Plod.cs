@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace branjeVoca {
     class Plod {
+
         public Vocka Vocka;
 
         public int Tezina {
             get;
-            set;
+            protected set;
         }
 
         public Plod(Vocka _vocka, int _tezina) {
