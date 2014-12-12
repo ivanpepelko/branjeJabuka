@@ -65,14 +65,6 @@ namespace branjeVoca {
             }
 
         }
-
-        public void ispisPlodova() {
-            Console.WriteLine("Berac {0} ima:", this.Ime);
-            foreach (Plod plod in this.SpremnikPlodova) {
-                Console.WriteLine("\t{0} tezine {1} grama", plod.Vocka.VrstaVocke.ToString(), plod.Tezina);
-            }
-            Console.WriteLine("Tezina svih plodova: {0} grama", this.TezinaUbranihPlodova);
-        }
-
+        
     }
 }

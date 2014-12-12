@@ -46,11 +46,5 @@ namespace branjeVoca {
             return plod;
         }
 
-        public void ispisPlodova() {
-            Console.WriteLine("Broj plodova: {0}", this.Plodovi.Count);
-            foreach (Plod plod in this.Plodovi) {
-                Console.WriteLine("Tezina: {0}", plod.Tezina);
-            }
-        }
     }
 }
