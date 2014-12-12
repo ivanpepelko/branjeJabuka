@@ -29,10 +29,8 @@ namespace branjeVoca {
             Console.WriteLine("F12 - Izlaz");
             MenuUtil.Separator();
             Console.WriteLine("Odaberite opciju:");
-
-            ConsoleKeyInfo key = Console.ReadKey(true);
-            
-            switch (key.Key) {
+                        
+            switch (Console.ReadKey(true).Key) {
                 case ConsoleKey.F1:
                     MeniVocke();
                     break;
@@ -61,10 +59,8 @@ namespace branjeVoca {
             MenuUtil.Separator();
 
             Console.WriteLine("Odaberite opciju:");
-
-            ConsoleKeyInfo key = Console.ReadKey(true);
-
-            switch (key.Key) {
+                        
+            switch (Console.ReadKey(true).Key) {
                 case ConsoleKey.F1:
                     MenuUtil.Naslov("Popis voćki");
                     if (Vocke.Count == 0) {
@@ -129,9 +125,7 @@ namespace branjeVoca {
             MenuUtil.Separator();
             Console.WriteLine("Odaberite opciju:");
 
-            ConsoleKeyInfo key = Console.ReadKey(true);
-
-            switch (key.Key) {
+            switch (Console.ReadKey(true).Key) {
                 case ConsoleKey.F1:
                     MenuUtil.Message("Not yet, cyka!", ConsoleColor.Red);
                     MeniBeraci();
