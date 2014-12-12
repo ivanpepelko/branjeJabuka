@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace branjeVoca {
     class Program {
 
         private static List<Vocka> Vocke;
         private static List<BeracVoca> Beraci;
+        //private static FileStream Storage;
 
         static void Main(string[] args) {
+            //Storage = File.Open("storage", FileMode.OpenOrCreate);
             Vocke = new List<Vocka>();
             Beraci = new List<BeracVoca>();
-
+            
             Meni();
-
-            Console.ReadKey();
 
         }
 
@@ -37,6 +38,7 @@ namespace branjeVoca {
                     MeniBeraci();
                     break;
                 case ConsoleKey.Escape:
+                    //SpremiPrijeIzlaza();
                     Environment.Exit(0);
                     break;
                 default:
@@ -103,6 +105,7 @@ namespace branjeVoca {
                     Meni();
                     break;
                 case ConsoleKey.Escape:
+                    //SpremiPrijeIzlaza();
                     Environment.Exit(0);
                     break;
                 default:
@@ -140,6 +143,7 @@ namespace branjeVoca {
                     Meni();
                     break;
                 case ConsoleKey.Escape:
+                    //SpremiPrijeIzlaza();
                     Environment.Exit(0);
                     break;
                 default:
@@ -148,5 +152,24 @@ namespace branjeVoca {
                     break;
             }
         }
+
+        static private void SpremiPrijeIzlaza() {
+            string towrite = "";
+            foreach (Vocka voc in Vocke) {
+                towrite += voc.VrstaVocke.ToString();
+                towrite += "\n";
+                foreach (Plod plod in voc.Plodovi) {
+                    towrite += plod.Tezina;
+                    towrite += "\t";
+                }
+                towrite += "\n\n";
+            }
+
+            byte[] bytes = new byte[towrite.Length * sizeof(char)];
+            System.Buffer.BlockCopy(towrite.ToCharArray(), 0, bytes, 0, bytes.Length * sizeof(byte));
+
+            //Storage.Write(bytes, 0, bytes.Length * sizeof(byte));
+        }
+
     }
 }
