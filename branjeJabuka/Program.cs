@@ -22,12 +22,12 @@ namespace branjeVoca {
 
         static private void Meni() {
             Console.Clear();
-            Copyright();
-            Naslov("Branje vocaka - Glavni meni");
+            MenuUtil.Copyright();
+            MenuUtil.Naslov("Branje vocaka - Glavni meni");
             Console.WriteLine("1 - Voćke");
             Console.WriteLine("2 - Berači");
             Console.WriteLine("9 - Izlaz");
-            Separator();
+            MenuUtil.Separator();
             Console.WriteLine("Odaberite opciju:");
 
             string opt = Console.ReadLine();
@@ -43,7 +43,7 @@ namespace branjeVoca {
                     Environment.Exit(0);
                     break;
                 default:
-                    PogresanUnosMessage();
+                    MenuUtil.PogresanUnosMessage();
                     Meni();
                     break;
             }
@@ -52,12 +52,12 @@ namespace branjeVoca {
 
         static private void MeniVocke() {
             Console.Clear();
-            Copyright();
-            Naslov("Voćke");
+            MenuUtil.Copyright();
+            MenuUtil.Naslov("Voćke");
             Console.WriteLine("1 - Pregled voćki u voćnjaku");
             Console.WriteLine("2 - Posadi voćku");
             Console.WriteLine("9 - Povratak u glavni meni");
-            Separator();
+            MenuUtil.Separator();
 
             Console.WriteLine("Odaberite opciju:");
 
@@ -65,33 +65,33 @@ namespace branjeVoca {
 
             switch (opt) {
                 case "1":
-                    Naslov("Popis voćki");
+                    MenuUtil.Naslov("Popis voćki");
                     if (Vocke.Count == 0) {
-                        Message("Još nijedna voćka nije posađena!", ConsoleColor.Blue);
-                        Separator();
+                        MenuUtil.Message("Još nijedna voćka nije posađena!", ConsoleColor.Blue);
+                        MenuUtil.Separator();
                     } else {
                         foreach (Vocka vocka in Vocke) {
                             Console.WriteLine("{0} - {1}", Vocke.IndexOf(vocka), vocka.VrstaVocke.ToString());
                         }
-                        Separator();
-                        Message("Kraj ispisa voćki.");
+                        MenuUtil.Separator();
+                        MenuUtil.Message("Kraj ispisa voćki.");
                     }
                     MeniVocke();
                     break;
                 case "2":
-                    Separator();
+                    MenuUtil.Separator();
                     Console.WriteLine("Vrste:");
                     List<VrstaVocke> vrste = Enum.GetValues(typeof(VrstaVocke)).Cast<VrstaVocke>().ToList<VrstaVocke>();
                     foreach (VrstaVocke vrsta in vrste) {
                         Console.WriteLine("{0} - {1}", vrste.IndexOf(vrsta), vrsta.ToString());
                     }
-                    Separator();
+                    MenuUtil.Separator();
                     Console.WriteLine("Odaberite vrstu:");
                     string input = Console.ReadLine();
                     int vr;
                     if (int.TryParse(input, out vr)) {
                         if (vr < 0 || vr > vrste.Count) {
-                            PogresanUnosMessage();
+                            MenuUtil.PogresanUnosMessage();
                         } else {
                             Vocka nova_vocka = new Vocka(vrste.ElementAt<VrstaVocke>(vr));
                             Vocke.Add(nova_vocka);
@@ -101,7 +101,7 @@ namespace branjeVoca {
                             Console.ReadKey();
                         }
                     } else {
-                        PogresanUnosMessage();
+                        MenuUtil.PogresanUnosMessage();
                     }
                     MeniVocke();
                     break;
@@ -109,7 +109,7 @@ namespace branjeVoca {
                     Meni();
                     break;
                 default:
-                    PogresanUnosMessage();
+                    MenuUtil.PogresanUnosMessage();
                     MeniVocke();
                     break;
             }
@@ -117,64 +117,28 @@ namespace branjeVoca {
 
         static private void MeniBeraci() {
             Console.Clear();
-            Copyright();
-            Naslov("Berači");
+            MenuUtil.Copyright();
+            MenuUtil.Naslov("Berači");
             Console.WriteLine("1 - Popis berača");
             Console.WriteLine("9 - Povratak u glavni meni");
-            Separator();
+            MenuUtil.Separator();
             Console.WriteLine("Odaberite opciju:");
 
             string opt = Console.ReadLine();
 
             switch (opt) {
                 case "1":
-                    Message("Not yet, cyka!", ConsoleColor.Red);
+                    MenuUtil.Message("Not yet, cyka!", ConsoleColor.Red);
                     MeniBeraci();
                     break;
                 case "9":
                     Meni();
                     break;
                 default:
-                    PogresanUnosMessage();
+                    MenuUtil.PogresanUnosMessage();
                     MeniBeraci();
                     break;
             }
-        }
-
-        static private void Copyright() {
-            int left = Console.WindowLeft;
-            int top = Console.WindowTop;
-
-            Console.SetCursorPosition(left, Console.WindowHeight - 2);
-            Separator();
-            Console.WriteLine("Branje vocaka v0.1 Alpha, Copyright © Ivan Pepelko 2014");
-            Console.SetCursorPosition(left, top);
-        }
-
-        static private void Message(string _msg) {
-            Console.WriteLine(_msg + " Pritisnite bilo koju tipku za nastavak...");
-            Console.ReadKey();
-        }
-
-        static private void Message(string _msg, ConsoleColor _color) {
-            Console.BackgroundColor = _color;
-            Console.WriteLine(_msg + " Pritisnite bilo koju tipku za nastavak...");
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ReadKey();
-        }
-
-        static private void PogresanUnosMessage() {
-            Message("Pogrešan unos!", ConsoleColor.Red);
-        }
-
-        static private void Separator() {
-            Console.WriteLine("-------------------------------------------------------------------------------");
-        }
-
-        static private void Naslov(string _naslov) {
-            Separator();
-            Console.WriteLine(_naslov);
-            Separator();
         }
     }
 }
