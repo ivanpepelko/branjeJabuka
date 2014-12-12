@@ -128,7 +128,7 @@ namespace branjeVoca {
 
             switch (opt) {
                 case "1":
-                    Message("Not yet!", ConsoleColor.Red);
+                    Message("Not yet, cyka!", ConsoleColor.Red);
                     MeniBeraci();
                     break;
                 case "9":
