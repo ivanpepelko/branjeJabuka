@@ -26,7 +26,7 @@ namespace branjeVoca {
             MenuUtil.Naslov("Branje vocaka - Glavni meni");
             Console.WriteLine("F1 - Voćke");
             Console.WriteLine("F2 - Berači");
-            Console.WriteLine("F12 - Izlaz");
+            Console.WriteLine("ESC - Izlaz");
             MenuUtil.Separator();
             Console.WriteLine("Odaberite opciju:");
                         
@@ -37,7 +37,7 @@ namespace branjeVoca {
                 case ConsoleKey.F2:
                     MeniBeraci();
                     break;
-                case ConsoleKey.F12:
+                case ConsoleKey.Escape:
                     Environment.Exit(0);
                     break;
                 default:
@@ -54,8 +54,8 @@ namespace branjeVoca {
             MenuUtil.Naslov("Voćke");
             Console.WriteLine("F1 - Pregled voćki u voćnjaku");
             Console.WriteLine("F2 - Posadi voćku");
-            Console.WriteLine("F11 - Povratak u glavni meni");
-            Console.WriteLine("F12 - Izlaz");
+            Console.WriteLine("Backspace - Povratak u glavni meni");
+            Console.WriteLine("ESC - Izlaz");
             MenuUtil.Separator();
 
             Console.WriteLine("Odaberite opciju:");
@@ -102,10 +102,10 @@ namespace branjeVoca {
                     }
                     MeniVocke();
                     break;
-                case ConsoleKey.F11:
+                case ConsoleKey.Backspace:
                     Meni();
                     break;
-                case ConsoleKey.F12:
+                case ConsoleKey.Escape:
                     Environment.Exit(0);
                     break;
                 default:
@@ -120,8 +120,8 @@ namespace branjeVoca {
             MenuUtil.Copyright();
             MenuUtil.Naslov("Berači");
             Console.WriteLine("F1 - Popis berača");
-            Console.WriteLine("F11 - Povratak u glavni meni");
-            Console.WriteLine("F12 - Izlaz");
+            Console.WriteLine("Backspace - Povratak u glavni meni");
+            Console.WriteLine("ESC - Izlaz");
             MenuUtil.Separator();
             Console.WriteLine("Odaberite opciju:");
 
@@ -130,10 +130,10 @@ namespace branjeVoca {
                     MenuUtil.Message("Not yet, cyka!", ConsoleColor.Red);
                     MeniBeraci();
                     break;
-                case ConsoleKey.F11:
+                case ConsoleKey.Backspace:
                     Meni();
                     break;
-                case ConsoleKey.F12:
+                case ConsoleKey.Escape:
                     Environment.Exit(0);
                     break;
                 default:
