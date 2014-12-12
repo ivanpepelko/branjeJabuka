@@ -24,22 +24,22 @@ namespace branjeVoca {
             Console.Clear();
             MenuUtil.Copyright();
             MenuUtil.Naslov("Branje vocaka - Glavni meni");
-            Console.WriteLine("1 - Voćke");
-            Console.WriteLine("2 - Berači");
-            Console.WriteLine("9 - Izlaz");
+            Console.WriteLine("F1 - Voćke");
+            Console.WriteLine("F2 - Berači");
+            Console.WriteLine("F12 - Izlaz");
             MenuUtil.Separator();
             Console.WriteLine("Odaberite opciju:");
 
-            string opt = Console.ReadLine();
-
-            switch (opt) {
-                case "1":
+            ConsoleKeyInfo key = Console.ReadKey(true);
+            
+            switch (key.Key) {
+                case ConsoleKey.F1:
                     MeniVocke();
                     break;
-                case "2":
+                case ConsoleKey.F2:
                     MeniBeraci();
                     break;
-                case "9":
+                case ConsoleKey.F12:
                     Environment.Exit(0);
                     break;
                 default:
@@ -54,17 +54,18 @@ namespace branjeVoca {
             Console.Clear();
             MenuUtil.Copyright();
             MenuUtil.Naslov("Voćke");
-            Console.WriteLine("1 - Pregled voćki u voćnjaku");
-            Console.WriteLine("2 - Posadi voćku");
-            Console.WriteLine("9 - Povratak u glavni meni");
+            Console.WriteLine("F1 - Pregled voćki u voćnjaku");
+            Console.WriteLine("F2 - Posadi voćku");
+            Console.WriteLine("F11 - Povratak u glavni meni");
+            Console.WriteLine("F12 - Izlaz");
             MenuUtil.Separator();
 
             Console.WriteLine("Odaberite opciju:");
 
-            string opt = Console.ReadLine();
+            ConsoleKeyInfo key = Console.ReadKey(true);
 
-            switch (opt) {
-                case "1":
+            switch (key.Key) {
+                case ConsoleKey.F1:
                     MenuUtil.Naslov("Popis voćki");
                     if (Vocke.Count == 0) {
                         MenuUtil.Message("Još nijedna voćka nije posađena!", ConsoleColor.Blue);
@@ -78,7 +79,7 @@ namespace branjeVoca {
                     }
                     MeniVocke();
                     break;
-                case "2":
+                case ConsoleKey.F2:
                     MenuUtil.Separator();
                     Console.WriteLine("Vrste:");
                     List<VrstaVocke> vrste = Enum.GetValues(typeof(VrstaVocke)).Cast<VrstaVocke>().ToList<VrstaVocke>();
@@ -105,8 +106,11 @@ namespace branjeVoca {
                     }
                     MeniVocke();
                     break;
-                case "9":
+                case ConsoleKey.F11:
                     Meni();
+                    break;
+                case ConsoleKey.F12:
+                    Environment.Exit(0);
                     break;
                 default:
                     MenuUtil.PogresanUnosMessage();
@@ -119,20 +123,24 @@ namespace branjeVoca {
             Console.Clear();
             MenuUtil.Copyright();
             MenuUtil.Naslov("Berači");
-            Console.WriteLine("1 - Popis berača");
-            Console.WriteLine("9 - Povratak u glavni meni");
+            Console.WriteLine("F1 - Popis berača");
+            Console.WriteLine("F11 - Povratak u glavni meni");
+            Console.WriteLine("F12 - Izlaz");
             MenuUtil.Separator();
             Console.WriteLine("Odaberite opciju:");
 
-            string opt = Console.ReadLine();
+            ConsoleKeyInfo key = Console.ReadKey(true);
 
-            switch (opt) {
-                case "1":
+            switch (key.Key) {
+                case ConsoleKey.F1:
                     MenuUtil.Message("Not yet, cyka!", ConsoleColor.Red);
                     MeniBeraci();
                     break;
-                case "9":
+                case ConsoleKey.F11:
                     Meni();
+                    break;
+                case ConsoleKey.F12:
+                    Environment.Exit(0);
                     break;
                 default:
                     MenuUtil.PogresanUnosMessage();
