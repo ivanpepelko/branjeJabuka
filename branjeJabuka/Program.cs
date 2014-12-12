@@ -28,8 +28,7 @@ namespace branjeVoca {
             Console.WriteLine("F2 - Berači");
             Console.WriteLine("ESC - Izlaz");
             MenuUtil.Separator();
-            Console.WriteLine("Odaberite opciju:");
-                        
+            
             switch (Console.ReadKey(true).Key) {
                 case ConsoleKey.F1:
                     MeniVocke();
@@ -58,8 +57,6 @@ namespace branjeVoca {
             Console.WriteLine("ESC - Izlaz");
             MenuUtil.Separator();
 
-            Console.WriteLine("Odaberite opciju:");
-                        
             switch (Console.ReadKey(true).Key) {
                 case ConsoleKey.F1:
                     MenuUtil.Naslov("Popis voćki");
@@ -123,11 +120,20 @@ namespace branjeVoca {
             Console.WriteLine("Backspace - Povratak u glavni meni");
             Console.WriteLine("ESC - Izlaz");
             MenuUtil.Separator();
-            Console.WriteLine("Odaberite opciju:");
 
             switch (Console.ReadKey(true).Key) {
                 case ConsoleKey.F1:
-                    MenuUtil.Message("Not yet, cyka!", ConsoleColor.Red);
+                    MenuUtil.Naslov("Popis berača");
+                    if (Beraci.Count == 0) {
+                        MenuUtil.Message("Još nema berača!", ConsoleColor.Blue);
+                        MenuUtil.Separator();
+                    } else {
+                        foreach (BeracVoca berac in Beraci) {
+                            Console.WriteLine("{0} - {1}, spremnik: {2} grama", Beraci.IndexOf(berac), berac.Ime, berac.VelicinaSpremnika);
+                        }
+                        MenuUtil.Separator();
+                        MenuUtil.Message("Kraj popisa beraca.");
+                    }
                     MeniBeraci();
                     break;
                 case ConsoleKey.Backspace:
