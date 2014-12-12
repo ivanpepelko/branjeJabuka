@@ -49,7 +49,7 @@ namespace branjeVoca {
 
         public void uberiNajteziPlod(Vocka _vocka) {
             if (_vocka.Plodovi.Count != 0) {
-                Plod plod = _vocka.nadiNajteziPlod();
+                Plod plod = this.nadiNajteziPlod(_vocka);
                 this.SpremnikPlodova.Add(plod);
                 _vocka.Plodovi.Remove(plod);
             }
@@ -58,13 +58,25 @@ namespace branjeVoca {
         public void uberiNajteziPlod(Vocka _vocka, int _komada) {
             for (int i = 0; i < _komada; i++) {
                 if (_vocka.Plodovi.Count != 0) {
-                    Plod plod = _vocka.nadiNajteziPlod();
+                    Plod plod = this.nadiNajteziPlod(_vocka);
                     this.SpremnikPlodova.Add(plod);
                     _vocka.Plodovi.Remove(plod);
                 }
             }
 
         }
-        
+
+        public Plod nadiNajteziPlod(Vocka _vocka) {
+            Plod plod = _vocka.Plodovi.First();
+            foreach (Plod p in _vocka.Plodovi) {
+                if (p.Tezina > plod.Tezina) {
+                    plod = p;
+                } else {
+                    continue;
+                }
+            }
+
+            return plod;
+        }
     }
 }

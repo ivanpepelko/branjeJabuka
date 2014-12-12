@@ -33,18 +33,6 @@ namespace branjeVoca {
             }
         }
 
-        public Plod nadiNajteziPlod() {
-            Plod plod = this.Plodovi.First();
-            foreach (Plod p in this.Plodovi) {
-                if (p.Tezina > plod.Tezina) {
-                    plod = p;
-                } else {
-                    continue;
-                }
-            }
-
-            return plod;
-        }
 
     }
 }
