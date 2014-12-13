@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace branjeVoca {
 
     enum VrstaVocke {
-        Jabuka,
-        Naranca,
-        Sljiva,
-        Kruska,
-        Banana
+        Jabuka = 1,
+        Naranca = 2,
+        Sljiva = 3,
+        Kruska = 4,
+        Banana = 5
     }
 
     class Vocka {

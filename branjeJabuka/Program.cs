@@ -10,10 +10,10 @@ namespace branjeVoca {
 
         private static List<Vocka> Vocke;
         private static List<BeracVoca> Beraci;
-        //private static FileStream Storage;
+        //private static FileStream Storage; // TODO
 
         static void Main(string[] args) {
-            //Storage = File.Open("storage", FileMode.OpenOrCreate);
+            //Storage = File.Open("storage", FileMode.OpenOrCreate); // TODO
             Vocke = new List<Vocka>();
             Beraci = new List<BeracVoca>();
             
@@ -38,7 +38,7 @@ namespace branjeVoca {
                     MeniBeraci();
                     break;
                 case ConsoleKey.Escape:
-                    //SpremiPrijeIzlaza();
+                    //SpremiPrijeIzlaza();  // TODO
                     Environment.Exit(0);
                     break;
                 default:
@@ -61,7 +61,9 @@ namespace branjeVoca {
 
             switch (Console.ReadKey(true).Key) {
                 case ConsoleKey.F1:
+
                     MenuUtil.Naslov("Popis voćki");
+
                     if (Vocke.Count == 0) {
                         MenuUtil.Message("Još nijedna voćka nije posađena!", ConsoleColor.Blue);
                         MenuUtil.Separator();
@@ -72,16 +74,21 @@ namespace branjeVoca {
                         MenuUtil.Separator();
                         MenuUtil.Message("Kraj ispisa voćki.");
                     }
+
                     MeniVocke();
                     break;
+
                 case ConsoleKey.F2:
                     MenuUtil.Separator();
+
                     Console.WriteLine("Vrste:");
                     List<VrstaVocke> vrste = Enum.GetValues(typeof(VrstaVocke)).Cast<VrstaVocke>().ToList<VrstaVocke>();
                     foreach (VrstaVocke vrsta in vrste) {
                         Console.WriteLine("{0} - {1}", vrste.IndexOf(vrsta), vrsta.ToString());
                     }
+
                     MenuUtil.Separator();
+
                     Console.WriteLine("Odaberite vrstu:");
                     string input = Console.ReadLine();
                     int vr;
@@ -99,15 +106,19 @@ namespace branjeVoca {
                     } else {
                         MenuUtil.PogresanUnosMessage();
                     }
+
                     MeniVocke();
                     break;
+
                 case ConsoleKey.Backspace:
                     Meni();
                     break;
+
                 case ConsoleKey.Escape:
-                    //SpremiPrijeIzlaza();
+                    //SpremiPrijeIzlaza(); // TODO
                     Environment.Exit(0);
                     break;
+
                 default:
                     MenuUtil.PogresanUnosMessage();
                     MeniVocke();
@@ -116,17 +127,21 @@ namespace branjeVoca {
         }
 
         static private void MeniBeraci() {
+
             Console.Clear();
             MenuUtil.Copyright();
+
             MenuUtil.Naslov("Berači");
             Console.WriteLine("F1 - Popis berača");
             Console.WriteLine("Backspace - Povratak u glavni meni");
             Console.WriteLine("ESC - Izlaz");
+
             MenuUtil.Separator();
 
             switch (Console.ReadKey(true).Key) {
                 case ConsoleKey.F1:
                     MenuUtil.Naslov("Popis berača");
+
                     if (Beraci.Count == 0) {
                         MenuUtil.Message("Još nema berača!", ConsoleColor.Blue);
                         MenuUtil.Separator();
@@ -137,15 +152,19 @@ namespace branjeVoca {
                         MenuUtil.Separator();
                         MenuUtil.Message("Kraj popisa beraca.");
                     }
+
                     MeniBeraci();
                     break;
+
                 case ConsoleKey.Backspace:
                     Meni();
                     break;
+
                 case ConsoleKey.Escape:
-                    //SpremiPrijeIzlaza();
+                    //SpremiPrijeIzlaza(); // TODO
                     Environment.Exit(0);
                     break;
+
                 default:
                     MenuUtil.PogresanUnosMessage();
                     MeniBeraci();
@@ -153,6 +172,7 @@ namespace branjeVoca {
             }
         }
 
+        // TODO
         static private void SpremiPrijeIzlaza() {
             string towrite = "";
             foreach (Vocka voc in Vocke) {
@@ -168,7 +188,8 @@ namespace branjeVoca {
             byte[] bytes = new byte[towrite.Length * sizeof(char)];
             System.Buffer.BlockCopy(towrite.ToCharArray(), 0, bytes, 0, bytes.Length * sizeof(byte));
 
-            //Storage.Write(bytes, 0, bytes.Length * sizeof(byte));
+            //Storage.Write(bytes, 0, bytes.Length * sizeof(byte)); // TODO
+
         }
 
     }

@@ -42,5 +42,12 @@ namespace branjeVoca {
             Console.WriteLine(_naslov);
             Separator();
         }
+
+        static public void NemaVisePlodovaMessage(Vocka _vocka) {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("{0} nema vise plodova! Pritisnite bilo koju tipku za nastavak...", _vocka.VrstaVocke.ToString());
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ReadKey();
+        }
     }
 }

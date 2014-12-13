@@ -43,18 +43,23 @@ namespace branjeVoca {
 
         public void uberiPlod(Vocka _vocka) {
             if (_vocka.Plodovi.Count != 0) {
-                Plod plod = _vocka.Plodovi.First<Plod>();
+                Plod plod = _vocka.Plodovi.First();
                 this.SpremnikPlodova.Add(plod);
                 _vocka.Plodovi.Remove(plod);
+            } else {
+                MenuUtil.NemaVisePlodovaMessage(_vocka);
             }
         }
 
         public void uberiPlod(Vocka _vocka, int _komada) {
             for (int i = 0; i < _komada; i++) {
                 if (_vocka.Plodovi.Count != 0) {
-                    Plod plod = _vocka.Plodovi.First<Plod>();
+                    Plod plod = _vocka.Plodovi.First();
                     this.SpremnikPlodova.Add(plod);
                     _vocka.Plodovi.Remove(plod);
+                } else {
+                    MenuUtil.NemaVisePlodovaMessage(_vocka);
+                    break;
                 }
             }
         }
@@ -64,6 +69,8 @@ namespace branjeVoca {
                 Plod plod = this.nadiNajteziPlod(_vocka);
                 this.SpremnikPlodova.Add(plod);
                 _vocka.Plodovi.Remove(plod);
+            } else {
+                MenuUtil.NemaVisePlodovaMessage(_vocka);
             }
         }
 
@@ -73,6 +80,9 @@ namespace branjeVoca {
                     Plod plod = this.nadiNajteziPlod(_vocka);
                     this.SpremnikPlodova.Add(plod);
                     _vocka.Plodovi.Remove(plod);
+                } else {
+                    MenuUtil.NemaVisePlodovaMessage(_vocka);
+                    break;
                 }
             }
 
