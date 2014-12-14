@@ -89,6 +89,14 @@ namespace branjeVoca {
         }
 
         public Plod nadiNajteziPlod(Vocka _vocka) {
+            var t_max = (from pl in _vocka.Plodovi
+                      select pl.Tezina).Max();
+            var plod = (from pl in _vocka.Plodovi
+                            where pl.Tezina == t_max
+                            select pl).Single();
+
+            return plod;
+            /*
             Plod plod = _vocka.Plodovi.First();
             foreach (Plod p in _vocka.Plodovi) {
                 if (p.Tezina > plod.Tezina) {
@@ -99,6 +107,7 @@ namespace branjeVoca {
             }
 
             return plod;
+             */
         }
     }
 }

@@ -16,7 +16,7 @@ namespace branjeVoca {
             //Storage = File.Open("storage", FileMode.OpenOrCreate); // TODO
             Vocke = new List<Vocka>();
             Beraci = new List<BeracVoca>();
-            
+
             Meni();
 
         }
