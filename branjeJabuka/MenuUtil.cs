@@ -13,7 +13,7 @@ namespace branjeVoca {
 
             Console.SetCursorPosition(left, Console.WindowHeight - 2);
             Separator();
-            Console.WriteLine("Branje vocaka v0.1 Alpha, Copyright © Ivan Pepelko 2014");
+            Console.WriteLine("Branje vocaka v0.2 Beta, Copyright © Ivan Pepelko 2014");
             Console.SetCursorPosition(left, top);
         }
 

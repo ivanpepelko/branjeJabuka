@@ -17,6 +17,17 @@ namespace branjeVoca {
             Vocke = new List<Vocka>();
             Beraci = new List<BeracVoca>();
 
+            Vocka v = new Vocka(VrstaVocke.Banana);
+            BeracVoca b = new BeracVoca("b");
+
+            Vocke.Add(v);
+            Beraci.Add(b);
+
+            b.uberiNajteziPlod(v, 2);
+
+            Console.WriteLine(b.TezinaUbranihPlodova);
+            Console.ReadKey();
+
             Meni();
 
         }
@@ -133,6 +144,7 @@ namespace branjeVoca {
 
             MenuUtil.Naslov("Berači");
             Console.WriteLine("F1 - Popis berača");
+            Console.WriteLine("F2 - Dodaj berača");
             Console.WriteLine("Backspace - Povratak u glavni meni");
             Console.WriteLine("ESC - Izlaz");
 
@@ -152,6 +164,25 @@ namespace branjeVoca {
                         MenuUtil.Separator();
                         MenuUtil.Message("Kraj popisa beraca.");
                     }
+
+                    MeniBeraci();
+                    break;
+
+                case ConsoleKey.F2:
+                    Console.WriteLine("Unesite ime:");
+                    string ime = Console.ReadLine();
+                    Console.WriteLine("Unesite veličinu spremnika ili pritisnite\nEnter za standardni spremnik (5000 grama):");
+                    string velicina = Console.ReadLine();
+                    int vel;
+                    bool is_vel_int = int.TryParse(velicina, out vel);
+
+                    if (is_vel_int) {
+                        Beraci.Add(new BeracVoca(ime, vel));
+                    } else {
+                        Beraci.Add(new BeracVoca(ime));
+                    }
+
+                    MenuUtil.Message("Berač " + ime + " sa spremnikom od " + (is_vel_int ? vel : 5000) + " grama je dodan!", ConsoleColor.DarkGreen);
 
                     MeniBeraci();
                     break;

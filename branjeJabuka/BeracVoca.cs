@@ -21,10 +21,8 @@ namespace branjeVoca {
 
         public int TezinaUbranihPlodova {
             get {
-                int tezina = 0;
-                foreach (Plod plod in this.SpremnikPlodova) {
-                    tezina += plod.Tezina;
-                }
+                int tezina = (from plod in this.SpremnikPlodova
+                              select plod.Tezina).Sum();
                 return tezina;
             }
         }
@@ -89,25 +87,13 @@ namespace branjeVoca {
         }
 
         public Plod nadiNajteziPlod(Vocka _vocka) {
-            var t_max = (from pl in _vocka.Plodovi
-                      select pl.Tezina).Max();
-            var plod = (from pl in _vocka.Plodovi
-                            where pl.Tezina == t_max
-                            select pl).Single();
+            int t_max = (from pl in _vocka.Plodovi
+                         select pl.Tezina).Max();
+            Plod plod = (from pl in _vocka.Plodovi
+                         where pl.Tezina == t_max
+                         select pl).Single();
 
             return plod;
-            /*
-            Plod plod = _vocka.Plodovi.First();
-            foreach (Plod p in _vocka.Plodovi) {
-                if (p.Tezina > plod.Tezina) {
-                    plod = p;
-                } else {
-                    continue;
-                }
-            }
-
-            return plod;
-             */
         }
     }
 }
