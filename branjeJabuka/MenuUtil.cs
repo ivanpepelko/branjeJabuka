@@ -45,7 +45,14 @@ namespace branjeVoca {
 
         static public void NemaVisePlodovaMessage(Vocka _vocka) {
             Console.BackgroundColor = ConsoleColor.Red;
-            Console.WriteLine("{0} nema vise plodova! Pritisnite bilo koju tipku za nastavak...", _vocka.VrstaVocke.ToString());
+            Console.WriteLine("{0} nema više plodova! Pritisnite bilo koju tipku za nastavak...", _vocka.VrstaVocke.ToString());
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ReadKey();
+        }
+
+        static public void SpremnikJePunMessage(BeracVoca _berac) {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("{0} nema više mjesta u spremniku! Pritisnite bilo koju tipku za nastavak...", _berac.Ime);
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ReadKey();
         }

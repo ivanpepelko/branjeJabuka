@@ -27,6 +27,13 @@ namespace branjeVoca {
             }
         }
 
+        private bool mozeUbrati(Plod _plod) {
+            bool moze = true;
+            if (this.VelicinaSpremnika < this.TezinaUbranihPlodova + _plod.Tezina)
+                moze = false;
+            return moze;
+        }
+
         public BeracVoca(string _ime) {
             this.Ime = _ime;
             this.SpremnikPlodova = new List<Plod>();
@@ -42,8 +49,12 @@ namespace branjeVoca {
         public void uberiPlod(Vocka _vocka) {
             if (_vocka.Plodovi.Count != 0) {
                 Plod plod = _vocka.Plodovi.First();
-                this.SpremnikPlodova.Add(plod);
-                _vocka.Plodovi.Remove(plod);
+                if (this.mozeUbrati(plod)) {
+                    this.SpremnikPlodova.Add(plod);
+                    _vocka.Plodovi.Remove(plod);
+                } else {
+                    MenuUtil.SpremnikJePunMessage(this);
+                }
             } else {
                 MenuUtil.NemaVisePlodovaMessage(_vocka);
             }
@@ -53,8 +64,12 @@ namespace branjeVoca {
             for (int i = 0; i < _komada; i++) {
                 if (_vocka.Plodovi.Count != 0) {
                     Plod plod = _vocka.Plodovi.First();
-                    this.SpremnikPlodova.Add(plod);
-                    _vocka.Plodovi.Remove(plod);
+                    if (this.mozeUbrati(plod)) {
+                        this.SpremnikPlodova.Add(plod);
+                        _vocka.Plodovi.Remove(plod);
+                    } else {
+                        MenuUtil.SpremnikJePunMessage(this);
+                    }
                 } else {
                     MenuUtil.NemaVisePlodovaMessage(_vocka);
                     break;
@@ -65,8 +80,12 @@ namespace branjeVoca {
         public void uberiNajteziPlod(Vocka _vocka) {
             if (_vocka.Plodovi.Count != 0) {
                 Plod plod = this.nadiNajteziPlod(_vocka);
-                this.SpremnikPlodova.Add(plod);
-                _vocka.Plodovi.Remove(plod);
+                if (this.mozeUbrati(plod)) {
+                    this.SpremnikPlodova.Add(plod);
+                    _vocka.Plodovi.Remove(plod);
+                } else {
+                    MenuUtil.SpremnikJePunMessage(this);
+                }
             } else {
                 MenuUtil.NemaVisePlodovaMessage(_vocka);
             }
@@ -76,8 +95,12 @@ namespace branjeVoca {
             for (int i = 0; i < _komada; i++) {
                 if (_vocka.Plodovi.Count != 0) {
                     Plod plod = this.nadiNajteziPlod(_vocka);
-                    this.SpremnikPlodova.Add(plod);
-                    _vocka.Plodovi.Remove(plod);
+                    if (this.mozeUbrati(plod)) {
+                        this.SpremnikPlodova.Add(plod);
+                        _vocka.Plodovi.Remove(plod);
+                    } else {
+                        MenuUtil.SpremnikJePunMessage(this);
+                    }
                 } else {
                     MenuUtil.NemaVisePlodovaMessage(_vocka);
                     break;

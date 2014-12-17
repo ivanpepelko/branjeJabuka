@@ -16,18 +16,7 @@ namespace branjeVoca {
             //Storage = File.Open("storage", FileMode.OpenOrCreate); // TODO
             Vocke = new List<Vocka>();
             Beraci = new List<BeracVoca>();
-
-            Vocka v = new Vocka(VrstaVocke.Banana);
-            BeracVoca b = new BeracVoca("b");
-
-            Vocke.Add(v);
-            Beraci.Add(b);
-
-            b.uberiNajteziPlod(v, 2);
-
-            Console.WriteLine(b.TezinaUbranihPlodova);
-            Console.ReadKey();
-
+                        
             Meni();
 
         }
