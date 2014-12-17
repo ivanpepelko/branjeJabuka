@@ -9,12 +9,12 @@ namespace branjeVoca {
 
         public string Ime {
             get;
-            protected set;
+            private set;
         }
 
         public int VelicinaSpremnika {
             get;
-            protected set;
+            private set;
         }
 
         public List<Plod> SpremnikPlodova;

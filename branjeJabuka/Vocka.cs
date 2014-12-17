@@ -20,7 +20,7 @@ namespace branjeVoca {
 
         public VrstaVocke VrstaVocke {
             get;
-            protected set;
+            private set;
         }
 
         public Vocka(VrstaVocke _vrsta_vocke) {

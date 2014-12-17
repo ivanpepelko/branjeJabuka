@@ -11,7 +11,7 @@ namespace branjeVoca {
 
         public int Tezina {
             get;
-            protected set;
+            private set;
         }
 
         public Plod(Vocka _vocka, int _tezina) {
