@@ -13,6 +13,8 @@ namespace branjeVoca {
         //private static FileStream Storage; // TODO
 
         static void Main(string[] args) {
+            Console.Title = "Branje voćki v1.0";
+
             //Storage = File.Open("storage", FileMode.OpenOrCreate); // TODO
             Vocke = new List<Vocka>();
             Beraci = new List<BeracVoca>();
@@ -24,7 +26,7 @@ namespace branjeVoca {
         static private void Meni() {
             Console.Clear();
             MenuUtil.Copyright();
-            MenuUtil.Naslov("Branje vocaka - Glavni meni");
+            MenuUtil.Naslov("Branje voćki - Glavni meni");
             Console.WriteLine("F1 - Voćke");
             Console.WriteLine("F2 - Berači");
             Console.WriteLine("ESC - Izlaz");
