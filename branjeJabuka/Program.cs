@@ -217,7 +217,7 @@ namespace branjeVoca {
                                     string odg = Console.ReadLine().ToUpper();
                                     if (odg == "D") {
                                         berac.uberiNajteziPlod(vocka);
-                                    } else if (odg=="N") {
+                                    } else if (odg == "N") {
                                         berac.uberiPlod(vocka);
                                     } else {
                                         MenuUtil.PogresanUnosMessage();
