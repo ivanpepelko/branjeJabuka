@@ -16,7 +16,7 @@ namespace branjeVoca {
             //Storage = File.Open("storage", FileMode.OpenOrCreate); // TODO
             Vocke = new List<Vocka>();
             Beraci = new List<BeracVoca>();
-                        
+
             Meni();
 
         }
@@ -29,7 +29,7 @@ namespace branjeVoca {
             Console.WriteLine("F2 - Berači");
             Console.WriteLine("ESC - Izlaz");
             MenuUtil.Separator();
-            
+
             switch (Console.ReadKey(true).Key) {
                 case ConsoleKey.F1:
                     MeniVocke();
@@ -134,6 +134,8 @@ namespace branjeVoca {
             MenuUtil.Naslov("Berači");
             Console.WriteLine("F1 - Popis berača");
             Console.WriteLine("F2 - Dodaj berača");
+            Console.WriteLine("F3 - Branje plodova");
+            Console.WriteLine("F4 - Popis ubranih plodova po beraču");
             Console.WriteLine("Backspace - Povratak u glavni meni");
             Console.WriteLine("ESC - Izlaz");
 
@@ -158,20 +160,117 @@ namespace branjeVoca {
                     break;
 
                 case ConsoleKey.F2:
-                    Console.WriteLine("Unesite ime:");
-                    string ime = Console.ReadLine();
+                    string ime = "";
+                    while (ime == "") {
+                        Console.WriteLine("Unesite ime:");
+                        ime = Console.ReadLine();
+                        if (ime == "")
+                            MenuUtil.PogresanUnosMessage();
+                    };
+
                     Console.WriteLine("Unesite veličinu spremnika ili pritisnite\nEnter za standardni spremnik (5000 grama):");
                     string velicina = Console.ReadLine();
                     int vel;
-                    bool is_vel_int = int.TryParse(velicina, out vel);
-
-                    if (is_vel_int) {
+                    bool is_velicina_int = int.TryParse(velicina, out vel);
+                    if (is_velicina_int) {
                         Beraci.Add(new BeracVoca(ime, vel));
                     } else {
                         Beraci.Add(new BeracVoca(ime));
                     }
+                    MenuUtil.Message("Berač " + ime + " sa spremnikom od " + (is_velicina_int ? vel : 5000) + " grama je dodan!", ConsoleColor.DarkGreen);
 
-                    MenuUtil.Message("Berač " + ime + " sa spremnikom od " + (is_vel_int ? vel : 5000) + " grama je dodan!", ConsoleColor.DarkGreen);
+                    MeniBeraci();
+                    break;
+
+                case ConsoleKey.F3:
+                    MenuUtil.Naslov("Odaberite berača:");
+
+                    if (Beraci.Count == 0) {
+                        MenuUtil.Message("Još nema berača!", ConsoleColor.Blue);
+                        MenuUtil.Separator();
+                    } else {
+                        foreach (BeracVoca b in Beraci) {
+                            Console.WriteLine("{0} - {1}", Beraci.IndexOf(b), b.Ime);
+                        }
+                        MenuUtil.Separator();
+
+                        int index_beraca;
+
+                        if (int.TryParse(Console.ReadLine(), out index_beraca)) {
+                            BeracVoca berac = Beraci.ElementAt(index_beraca);
+                            Console.Clear();
+                            MenuUtil.Naslov("Odaberite voćku:");
+                            if (Vocke.Count == 0) {
+                                MenuUtil.Message("Još nijedna voćka nije posađena!", ConsoleColor.Blue);
+                                MenuUtil.Separator();
+                            } else {
+                                foreach (Vocka v in Vocke) {
+                                    Console.WriteLine("{0} - {1}", Vocke.IndexOf(v), v.VrstaVocke.ToString());
+                                }
+                                MenuUtil.Separator();
+
+                                int index_vocke;
+
+                                if (int.TryParse(Console.ReadLine(), out index_vocke)) {
+                                    Vocka vocka = Vocke.ElementAt(index_vocke);
+                                    Console.WriteLine("Ubrati najteži plod? (D/N)");
+                                    string odg = Console.ReadLine().ToUpper();
+                                    if (odg == "D") {
+                                        berac.uberiNajteziPlod(vocka);
+                                    } else if (odg=="N") {
+                                        berac.uberiPlod(vocka);
+                                    } else {
+                                        MenuUtil.PogresanUnosMessage();
+                                        MeniBeraci();
+                                    }
+                                } else {
+                                    MenuUtil.PogresanUnosMessage();
+                                    MeniBeraci();
+                                }
+
+                            }
+                            MeniBeraci();
+                        } else {
+                            MenuUtil.PogresanUnosMessage();
+                            MeniBeraci();
+                        }
+                    }
+
+                    MeniBeraci();
+                    break;
+
+                case ConsoleKey.F4:
+                    MenuUtil.Naslov("Odaberite berača:");
+
+                    if (Beraci.Count == 0) {
+                        MenuUtil.Message("Još nema berača!", ConsoleColor.Blue);
+                        MenuUtil.Separator();
+                    } else {
+                        foreach (BeracVoca b in Beraci) {
+                            Console.WriteLine("{0} - {1}", Beraci.IndexOf(b), b.Ime);
+                        }
+                        MenuUtil.Separator();
+
+                        int index_beraca;
+
+                        if (int.TryParse(Console.ReadLine(), out index_beraca)) {
+                            Console.Clear();
+                            BeracVoca berac = Beraci.ElementAt(index_beraca);
+                            MenuUtil.Separator();
+                            Console.WriteLine("U spremniku berača {0} se nalaze sljedeći plodovi:", berac.Ime);
+                            foreach (Plod p in berac.SpremnikPlodova) {
+                                Console.WriteLine("Plod: {0}; Tezina: {1}", p.Vocka.VrstaVocke.ToString(), p.Tezina);
+                            }
+                            MenuUtil.Separator();
+                            Console.WriteLine("Ukupno: {0}/{1} grama", berac.TezinaUbranihPlodova, berac.VelicinaSpremnika);
+                            MenuUtil.Separator();
+                            MenuUtil.Message("Kraj popisa plodova.");
+                            MeniBeraci();
+                        } else {
+                            MenuUtil.PogresanUnosMessage();
+                            MeniBeraci();
+                        }
+                    }
 
                     MeniBeraci();
                     break;
