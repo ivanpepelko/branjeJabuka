@@ -69,6 +69,7 @@ namespace branjeVoca {
                         _vocka.Plodovi.Remove(plod);
                     } else {
                         MenuUtil.SpremnikJePunMessage(this);
+                        break;
                     }
                 } else {
                     MenuUtil.NemaVisePlodovaMessage(_vocka);
@@ -100,6 +101,7 @@ namespace branjeVoca {
                         _vocka.Plodovi.Remove(plod);
                     } else {
                         MenuUtil.SpremnikJePunMessage(this);
+                        break;
                     }
                 } else {
                     MenuUtil.NemaVisePlodovaMessage(_vocka);
